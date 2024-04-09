@@ -1,0 +1,4 @@
+{{- range .Values.extraObjects }}
+---
+{{ include "container-agent.render" (dict "value" . "context" $) }}
+{{- end }}

@@ -123,3 +123,14 @@ remainder of arguments
 - name: no_proxy
   value: {{ join "," $noProxy | quote }}
 {{- end }}
+
+{{/*
+Renders a complete tree, even values that contains template.
+*/}}
+{{- define "container-agent.render" -}}
+  {{- if typeIs "string" .value }}
+    {{- tpl .value .context }}
+  {{ else }}
+    {{- tpl (.value | toYaml) .context }}
+  {{- end }}
+{{- end -}}

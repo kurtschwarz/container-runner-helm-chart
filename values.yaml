@@ -330,3 +330,6 @@ proxy:
 
   # -- List of hostnames, IP CIDR blocks exempt from proxying. Loopback and intra-service traffic is never proxied.
   no_proxy: []
+
+# -- Extra objects to deploy (value evaluated as a template)
+extraObjects: []

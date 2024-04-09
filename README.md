@@ -2,7 +2,7 @@
 
 For deploying a CircleCI Container Agent
 
-![Version: 101.0.21](https://img.shields.io/badge/Version-101.0.21-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3](https://img.shields.io/badge/AppVersion-3-informational?style=flat-square)
+![Version: 101.0.22](https://img.shields.io/badge/Version-101.0.22-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3](https://img.shields.io/badge/AppVersion-3-informational?style=flat-square)
 
 ## Contributing
 
@@ -94,6 +94,7 @@ The command removes all the Kubernetes objects associated with the chart and del
 | agent.ssh.startPort | int | `54782` | Define the start port for SSH. This, combined with `agent.ssh.numPorts`, is used to define a range of ports. Be aware that you may need to configure your firewall or security groups to allow this port range. |
 | agent.terminationGracePeriodSeconds | int | `18300` | Tasks are drained during the termination grace period, so this should be sufficiently long relative to the maximum run time to ensure graceful shutdown |
 | agent.tolerations | list | `[]` | Node tolerations for agent scheduling to nodes with taints Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/ |
+| extraObjects | list | `[]` | Extra objects to deploy (value evaluated as a template) |
 | logging | object | `{"image":{"registry":"","repository":"circleci/logging-collector","tag":3},"rbac":{"create":true,"role":{"name":"logging-collector","rules":[]}},"serviceAccount":{"annotations":{},"create":true,"name":"logging-collector","secret":{"name":"logging-collector-token"}}}` | Configuration values for the logging containers. These containers run alongside service containers and stream their logs to the CircleCI UI |
 | logging.serviceAccount | object | `{"annotations":{},"create":true,"name":"logging-collector","secret":{"name":"logging-collector-token"}}` | A service account with minimal permissions to collect the service container logs |
 | logging.serviceAccount.secret | object | `{"name":"logging-collector-token"}` | The secret containing the service account token |
